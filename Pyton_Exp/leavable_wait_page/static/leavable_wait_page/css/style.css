@@ -1,0 +1,230 @@
+/* ****************************************************************************************************************** */
+/* *** General *** */
+/* ****************************************************************************************************************** */
+
+h2 {
+    text-align: center !important;
+}
+
+.page-header {
+    margin: 40px 0 40px;
+    padding: 0;
+    border-bottom: none;
+}
+
+.otree-btn-next {
+    margin: 40px auto;
+    display: inherit;
+}
+
+.wrapper {
+    /*min-width: 512px;*/
+    max-width: 768px;
+    margin: 0 auto 20px;
+}
+
+.errorlist {
+    list-style-type: none;
+    margin-top: 5px;
+    margin-left: 0!important;
+    padding-left: 0!important;
+    color: #b94a48;
+}
+
+div.form-inline {
+    margin-bottom: 20px;
+}
+
+div.form-inline div.controls {
+    margin-left: 20px;
+}
+
+/* ****************************************************************************************************************** */
+/* *** Instructions *** */
+/* ****************************************************************************************************************** */
+
+.instructions {
+	width: 100%;
+	height: 100%;
+	background: rgba(255,255,245,0.25);
+	margin: 40px auto;
+    padding: 20px 20px 10px 20px;
+
+    position:relative;
+    -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.05) inset;
+       -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.05) inset;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.05) inset;
+
+    -moz-border-radius: 5px;
+         border-radius: 5px;
+}
+
+
+/* ****************************************************************************************************************** */
+/* *** Tables *** */
+/* ****************************************************************************************************************** */
+
+.table {
+    margin-bottom: 0;
+}
+
+.table>thead>tr>th,
+.table>tbody>tr>td {
+    padding: 10px;
+    vertical-align: middle;
+    border: none;
+}
+
+.header {
+    background-color: #e9e9e9;
+    border: 1px solid #dee2e6;
+}
+
+.right {
+    text-align: right;
+}
+
+.left {
+    text-align: left;
+}
+
+.min60 {
+    min-width: 60px;
+}
+
+.info {
+    padding: 15px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+}
+
+.btn-primary {
+    margin-bottom: 10px;
+}
+
+.btn-success[disabled], .btn-primary[disabled] {
+    opacity: 1;
+}
+
+.panel {
+    border: 0.5pt solid #e3e3e3;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    margin: 25px 0;
+}
+
+label {
+    font-weight: normal;
+    margin-bottom: 4pt;
+}
+
+
+/* ****************************************************************************************************************** */
+/* *** Sliders *** */
+/* ****************************************************************************************************************** */
+.slidecontainer {
+    display: table;
+    width: 70%; /* Width of the outside container */
+    height: 25px; /* make it high enough for knobs not to overlap */
+    margin-left: 5%;
+    margin-top: 14px;
+    margin-bottom: 14px;
+    table-layout: fixed;
+}
+input[type=range] {
+    -webkit-appearance: none;
+    margin: 18px 0;
+    width: 100%;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track { /* Bar in which the slider handle can be moved */
+    display: table-cell;
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    animate: 0.2s;
+    background: #d3d3d3;
+    border-radius: 5px;
+}
+input[type=range]::-moz-range-track { /* Bar in which the slider handle can be moved */
+    display: table-cell;
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    animate: 0.2s;
+    background: #d3d3d3;
+    border-radius: 5px;
+}
+input[type=range]::-ms-track { /* Bar in which the slider handle can be moved */
+    display: table-cell;
+    width: 100%;
+    height: 6px;
+    cursor: pointer;
+    animate: 0.2s;
+    background: transparent;
+    border-radius: 5px;
+    color: transparent;
+    border-color: transparent;
+    border-width: 12px 0;
+}
+input[type=range]::-ms-fill-lower {
+  background: #d3d3d3;
+  border-radius: 6px 0 0 6px;
+}
+input[type=range]::-ms-fill-upper {
+  background: #d3d3d3;
+  border-radius: 0 6px 6px 0;
+}
+input[type=range]::-ms-ticks-before {
+    color: transparent;
+}
+input[type=range]::-ms-ticks-after {
+    color: transparent;
+}
+input[type=range]::-ms-tooltip {
+    display: none;
+}
+.slidecontainer output {
+    display: table-cell;
+    padding-left: 30px;
+    width: 20%;
+}
+
+.slider:hover {
+    opacity: 1; /* Fully shown on mouse-over (no transparency) */
+}
+/* The slider handle (use webkit (Chrome, Opera, Safari, Edge) and moz (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    margin-top: -8px;
+    width: 8px; /* Set a specific slider handle width */
+    height: 20px; /* Slider handle height */
+    border-radius: 50%; /* Radius makes the slider handle round */
+    background: #4CAF50 ; /* Indigo background (Javascript color name) */
+    cursor: pointer; /* Cursor on hover */
+}
+.slider::-moz-range-thumb {
+    width: 8px; /* Set a specific slider handle width */
+    height: 20px; /* Slider handle height */
+    border-radius: 50%; /* Radius makes the slider handle round */
+    background: #4CAF50 ; /* Green background (Javascript color name) */
+    cursor: pointer; /* Cursor on hover */
+}
+.slider::-ms-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 8px; /* Set a specific slider handle width */
+    height: 20px; /* Slider handle height */
+    border-radius: 50%; /* Radius makes the slider handle round */
+    background: #4CAF50 ; /* Indigo background (Javascript color name) */
+    cursor: pointer; /* Cursor on hover */
+}
+.slider_table {
+    width: 100%;
+    border: 0px;
+    margin-bottom: 30px;
+}

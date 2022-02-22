@@ -1,0 +1,30 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Votante
+{% endblock %}
+
+{% block content %}
+<p>
+Tu eres uno de los N votantes en una elección ficticia. En esta elección existen dos candidatos de dos partidos políticos diferentes, un candidato del partido A y otro candidato del partido B. Ambos estarán representados por otros dos jugadores presentes en esta misma sesión.
+</p>
+<p>
+Tu valoras distinto a cada partido. Es decir, tú te sientes más cercano a un partido político, y por tanto, si gana el candidato de tu partido ganarás más puntos. A medida que la actividad continua, irás acumulando más puntos. Al final del estudio, recibirás 5 pesos chilenos por cada 12 puntos acumulados.
+</p>
+<p>
+    You can now add to this endowment by earning ECU in a task involving moving sliders on a computer screen. You will be ranked and placed in one of three equal-sized categories of performance: low, medium, and high. In the event of a tie, rank will be randomly determined.
+</p>
+<p>
+    Your earnings from the task will be calculated as your wage rate of <b>{{ player.wage }}</b> multiplied by your performance category (low/middle/high receive 5/8/13 ECU respectively).
+</p>
+<p>
+    At the end of the task, you and the other participants will then vote on how to allocate your resources from (a) the endowment and (b) earnings from the task. This will produce your final take-home payment in ECUs.
+</p>
+<p>
+    Finally, you will answer a short series of survey questions.
+</p>
+
+{% next_button %}
+
+{% endblock %}

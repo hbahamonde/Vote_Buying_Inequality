@@ -1,0 +1,112 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Usted es Votante
+{% endblock %}
+
+{% block content %}
+    {% load humanize %}
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  tr {
+  padding: 10px;
+}
+}
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+td {
+    text-align:center
+}
+</style>
+<p>
+    Usted es uno de los {{ N }} votantes de la elección y es <strong>simpatizante del partido {{ partido }}</strong>. En
+    particular, usted gana:
+</p>
+
+<table class="center">
+<tr>
+    <td><strong>{{ pje_A|intcomma }} </strong>puntos si gana el partido A</td>
+</tr>
+<tr>
+    <td><strong>{{ pje_B|intcomma }} </strong>puntos si gana el partido B</td>
+</tr>
+</table>
+    <br>
+
+
+    {% if n_pa == 1 and n_pb == 1 %}
+<p>
+    De los otros {{ N2 }} votantes,
+</p>
+        <table class="center">
+            <tr>
+            <td><strong>{{ n_pa }} votará por el candidato del partido A</strong></td>
+            </tr>
+            <tr>
+            <td><strong>{{ n_pb }} votará por el candidato del partido B</strong></td>
+            </tr>
+        </table>
+    <br>
+    {% elif n_pa > 1 and n_pb > 1 %}
+<p>
+    De los otros {{ N2 }} votantes,
+</p>
+        <table class="center">
+            <tr>
+            <td><strong>{{ n_pa }} votarán por el candidato del partido A</strong></td>
+            </tr>
+            <tr>
+            <td><strong>{{ n_pb }} votarán por el candidato del partido B</strong></td>
+            </tr>
+        </table>
+            <br>
+    {% elif n_pa == 0 %}
+<p>
+    De los otros {{ N2 }} votantes,
+</p>
+        <table class="center">
+            <tr>
+            <td><strong><strong>{{ n_pb }} votarán por el candidato del partido B</strong></td>
+            </tr>
+        </table>
+            <br>
+    {% elif n_pb == 0 %}
+<p>
+    De los otros {{ N2 }} votantes,
+</p>
+        <table class="center">
+            <tr>
+            <td><strong>{{ n_pa }} votarán por el candidato del partido A</td>
+            </tr>
+        </table>
+            <br>
+
+            {% else %}
+<p>
+    De los otros {{ N2 }} votantes,
+</p>
+        <table class="center">
+            <tr>
+            <td><strong>{{ n_pa }} votarán por el candidato del partido A</strong></td>
+            </tr>
+            <tr>
+            <td><strong>{{ n_pb }} votarán por el candidato del partido B</strong></td>
+            </tr>
+        </table>
+            <br>
+    {% endif %}
+<p>
+    Con relación a los partidos políticos, el partido ganador obtiene {{ Constants.E|intcomma }} puntos, y ellos pueden darle puntos
+    para que vote por ellos. Cada partido tiene  <strong>hasta {{ max_pg|intcomma }} puntos para ofrecer</strong>.
+</p>
+<p>
+    A continuación recibirás ofertas de los partidos. Recuerda, puede también darse el caso donde no reciba ofertas.
+</p>
+    {% next_button %}
+
+{% endblock %}

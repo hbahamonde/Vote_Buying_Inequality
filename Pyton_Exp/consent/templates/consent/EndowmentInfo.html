@@ -1,0 +1,20 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Description of Endowment
+{% endblock %}
+
+{% block content %}
+<p>
+    You were granted an endowment of {{ player.endowment }} ECU when signing up to this experiment. After being invested your endowment is now worth {{ player.investment_endowment }} ECU.
+</p>
+<p>
+    Your endowment {{ player.investment_endowment }} ECU will not be affected by your performance in the slider task.
+</p>
+<p>
+    After the task you and the other participants will choose a tax rate on wealth from endowments. Proceeds from the tax will be allocated equally across all participants.
+</p>
+    {% next_button %}
+
+{% endblock %}

@@ -1,0 +1,200 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Usted es {{ partido }}
+{% endblock %}
+
+{% block content %}
+{% load humanize %}
+<style>
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+td {
+    text-align:center
+}
+</style>
+<p>
+    En esta ronda del juego, usted  <strong>representará al {{ partido }}</strong>. Si gana estas elecciones, <strong>usted
+    obtiene {{ Constants.E|intcomma }} puntos</strong>, además cuenta con <strong>{{ presupuesto|intcomma }} puntos para negociar </strong>
+    con uno de los votantes. Su partido rival cuenta con <strong>la misma cantidad de puntos</strong> para ofrecer al votante y el
+    votante lo sabe. Si usted decide no utilizar estos puntos, o utilizar sólo una parte, estos puntos siguen siendo
+    suyos y se <strong>sumarán a su ganancia al final</strong> del juego.
+</p>
+<p>
+    En esta elección en particular <strong>participan {{ N }} votantes</strong>, y actualmente:
+</p>
+    {% if n_pa == 1 and n_pb == 1 %}
+
+        <table class="center" border="1">
+          <tr>
+            <th>Votarían por el partido A</th>
+            <th>Votarían por el partido B</th>
+          </tr>
+          <tr>
+            <td><strong>{{ n_pa }}</strong> votante</td>
+            <td><strong>{{ n_pb }}</strong> votante</td>
+          </tr>
+        </table>
+            <br>
+        <p>
+            Usted y el otro partido tienen la posibilidad de negociar con <strong>uno</strong> de los simpatizantes del partido
+            {{ partido_votante }} y ofrecerle puntos a cambio de su voto. El <strong>votante con el que negociará ganaría:</strong></p>
+
+        <table class="center" border="1">
+        <tr>
+            <td><strong>{{ pje_A|intcomma }} </strong>puntos si gana el partido A</td>
+        </tr>
+        <tr>
+            <td><strong>{{ pje_B|intcomma }} </strong>puntos si gana el partido B</td>
+        </tr>
+        </table>
+        <br>
+
+    {% elif n_pa > 1 and n_pb > 1 %}
+
+<table class="center" border="1">
+  <tr>
+    <th>Votarían por el partido A</th>
+    <th>Votarían por el partido B</th>
+  </tr>
+  <tr>
+    <td><strong>{{ n_pa }}</strong> votantes</td>
+    <td><strong>{{ n_pb }}</strong> votantes</td>
+  </tr>
+</table>
+    <br>
+<p>
+    Usted y el otro partido tienen la posibilidad de negociar con <strong>uno</strong> de los simpatizantes del partido
+    {{ partido_votante }} y ofrecerle puntos a cambio de su voto. El <strong>votante con el que negociará ganaría:</strong>
+</p>
+
+<table class="center" border="1">
+<tr>
+    <td><strong>{{ pje_A|intcomma }} </strong>puntos si gana el partido A</td>
+</tr>
+<tr>
+    <td><strong>{{ pje_B|intcomma }} </strong>puntos si gana el partido B</td>
+</tr>
+</table>
+    <br>
+
+    {% elif n_pa == 1 and n_pb > 1 %}
+
+<table class="center" border="1">
+  <tr>
+    <th>Votarían por el partido A</th>
+    <th>Votarían por el partido B</th>
+  </tr>
+  <tr>
+    <td><strong>{{ n_pa }}</strong> votante</td>
+    <td><strong>{{ n_pb }}</strong> votantes</td>
+  </tr>
+</table>
+    <br>
+<p>Usted y el otro partido tienen la posibilidad de negociar con <strong>uno</strong> de los simpatizantes del partido
+    {{ partido_votante }} y ofrecerle puntos a cambio de su voto. El <strong>votante con el que negociará ganaría:</strong></p>
+
+<table class="center" border="1">
+<tr>
+    <td><strong>{{ pje_A|intcomma }} </strong>puntos si gana el partido A</td>
+</tr>
+<tr>
+    <td><strong>{{ pje_B|intcomma }} </strong>puntos si gana el partido B</td>
+</tr>
+</table>
+    <br>
+    {% elif n_pb == 1 and n_pa > 1 %}
+
+<table class="center" border="1">
+  <tr>
+    <th>Votarían por el partido A</th>
+    <th>Votarían por el partido B</th>
+  </tr>
+  <tr>
+    <td><strong>{{ n_pa }}</strong> votantes</td>
+    <td><strong>{{ n_pb }}</strong> votante</td>
+  </tr>
+</table>
+    <br>
+<p>Usted y el otro partido tienen la posibilidad de negociar con <strong>uno</strong> de los simpatizantes del partido
+    {{ partido_votante }} y ofrecerle puntos a cambio de su voto. El <strong>votante con el que negociará ganaría:</strong></p>
+
+<table class="center" border="1">
+<tr>
+    <td><strong>{{ pje_A|intcomma }} </strong>puntos si gana el partido A</td>
+</tr>
+<tr>
+    <td><strong>{{ pje_B|intcomma }} </strong>puntos si gana el partido B</td>
+</tr>
+</table>
+    <br>
+
+{% endif %}
+
+
+<p>
+    ¿Quiere ofrecer puntos a este votante a cambio de su voto?
+</p>
+    <li>	Recuerde que dar puntos implica que perderás esos puntos <strong>realmente</strong>.
+    <li>	También recuerde que, si el votante con el que hizo un acuerdo acepta su oferta, eso implica que ese votante
+        votará por su partido </li>
+
+    <div>
+     <br>
+<h5>Haga su elección aquí:</h5>
+     <br>
+    </div>
+<table align="center">
+    <tr>
+    <td>    <div style="padding: 8px;">
+    <button type="button" onclick="myFunction()" id="oferta_si" name="p_oferta_choice" value="True" class="btn btn-primary btn-large">Sí, deseo hacer una oferta</button>
+<br>
+    </div></td>
+    <td><div id="partido_oferta" style="display:none">
+        complete en el recuadro cuántos puntos desea pagar por el voto:
+        {% formfield player.p_oferta_amount label="Si no quiere dar puntos a cambio del voto, ingrese un cero." %}
+
+</div></td>
+  </tr>
+  <tr>
+    <td><div id="partido_no_oferta" style="display:block">
+    <button id="oferta_no" name="p_oferta_choice" value=0 class="btn btn-primary btn-large">No, no deseo hacer una oferta al votante</button>
+    </div></td>
+    <td></td>
+  </tr>
+</table>
+
+<div id="enviar" style="display:none">
+    <br>
+    <br>
+        <button class="btn btn-primary btn-large">Siguiente</button>
+
+</div>
+    {{ form.p_oferta_choice.errors }}
+
+{% endblock %}
+
+{% block scripts %}
+
+    <!-- define a script -->
+<script>
+    function myFunction() {
+        let accepted = document.getElementById("oferta_si").onclick;
+        let y = document.getElementById("partido_oferta");
+        let n = document.getElementById("partido_no_oferta");
+        let enviar = document.getElementById("enviar");
+
+        if (accepted){
+            y.style.display = "block";
+            enviar.style.display = "block";
+            enviar.style.textAlign = "right";
+            n.style.display = "none";
+
+        }
+    }
+
+</script>
+{% endblock %}

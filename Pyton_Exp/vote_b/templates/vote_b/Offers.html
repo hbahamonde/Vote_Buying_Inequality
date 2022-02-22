@@ -1,0 +1,40 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Usted es Votante
+{% endblock %}
+
+{% block content %}
+{% load humanize %}
+<p>
+    Recuerde que,
+</p>
+<ul>
+  <li>	Usted ganaría {{ pje_A|intcomma }} puntos si es electo el partido A y {{ pje_B|intcomma }} puntos si es electo el partido B. </li>
+  <li>	Los partidos pueden darle hasta {{ presupuesto|intcomma }} puntos  </li>
+</ul>
+
+    {% if oferta_PA == 0 and  oferta_PB == 0 %}
+<ul>
+    Usted no ha recibido ofertas.
+
+</ul>
+
+    {% else %}
+<ul>
+    Usted ha recibido las siguientes ofertas:
+    <li>    El partido político A  te ofrece {{ oferta_PA|intcomma }} puntos por tu voto.</li>
+    <li>	El partido político B  te ofrece {{ oferta_PB|intcomma }} puntos por tu voto.</li>
+</ul>
+
+<p>
+   {% formfield player.p_oferta_acepta label="¿Qué oferta estás dispuesto a aceptar?" %}
+</p>
+
+    {% endif %}
+{% next_button %}
+
+
+
+{% endblock %}

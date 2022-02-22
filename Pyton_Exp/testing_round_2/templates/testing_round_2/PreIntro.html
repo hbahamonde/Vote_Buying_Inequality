@@ -1,0 +1,37 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Juego 2: Introducción
+{% endblock %}
+
+{% block content %}
+
+<p align="justify">
+    En el siguiente juego usted participará en una elección ficticia en la que participan votantes y dos partidos políticos.
+    En cada ronda del juego usted podrá ser un <strong>votante, partido A o partido B</strong>. En cada ronda de este juego
+    seguirá acumulando puntos para su pago final. Al terminar el estudio, recibirá 5 pesos chilenos por cada 12 puntos acumulados.
+</p>
+<p align="justify">
+    <strong>En este juego, los votantes podrán negociar con uno o ambos partidos</strong>, y ofrecerle puntos a cambio
+    de su voto. Si el partido aceptara los puntos ofrecidos, el votante votará por ese partido. El resto de los votantes son
+    ficticios y por lo tanto <strong>no</strong> cambiarán su voto.
+</p>
+<p align="justify">
+    Si usted es votante, le informaremos cuántos puntos ganaría cuando gana cada uno de los partidos, por qué partido votarán
+    los otros votantes, cuántos puntos gana el partido ganador y cuál es el presupuesto que tienen los partidos para negociar
+    con usted. Si usted es partido político, le informaremos cuántos puntos gana el votante con el cual negociará cuando sale
+    electo cada partido y por qué partido votarán los otros votantes.
+</p>
+    <div class="alert alert-warning">
+        <div class="card-body">
+            <p align="justify">
+                Le recomendamos tener a mano un lápiz y un papel y en lo posible una calculadora, para ir tomando nota de ciertos
+                datos que le entregaremos.
+            </p>
+        </div>
+    </div>
+
+    {% next_button %}
+
+{% endblock %}

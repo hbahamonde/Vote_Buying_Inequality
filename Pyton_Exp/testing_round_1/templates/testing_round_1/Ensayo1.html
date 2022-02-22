@@ -1,0 +1,87 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Ensayo del Juego 1: Los Partidos Políticos se Acercan a Negociar con los Votantes
+{% endblock %}
+
+{% block content %}
+<p align="justify">
+    En una votación ficticia, participan <strong>5 votantes</strong> que pueden optar por el candidato del <strong>Partido
+    A o del Partido B</strong>. De los 5 votantes:
+</p>
+
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  tr {
+  padding: 10px;
+}
+}
+td {
+    text-align:center
+}
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+
+<table class="center">
+  <tr>
+    <th>Votarían por el partido A</th>
+    <th>Votarían por el partido B</th>
+  </tr>
+  <tr>
+    <td>3 votantes</td>
+    <td>2 votantes</td>
+  </tr>
+</table>
+    <br>
+<p align="justify">
+    <strong>El partido que gane la elección obtendrá 2.400 puntos</strong>. Además, <strong>cada partido tiene 1.000 que
+    puede utilizar para negociar con un votante</strong>. Si el partido decide no ofrecer puntos o su oferta es rechazada
+    por el votante, el partido se queda con esos 1.000 puntos. Pero si decide ofrecer todos o parte de esos 1.000 puntos,
+    el partido pierde esos puntos.
+</p>
+<p align="justify">
+    POR EJEMPLO: Si un partido gana la elección, y le entregó a un votante 400 puntos a cambio de su voto, este partido
+    obtendrá 2.400 + 600 = 3.000 puntos al final de la ronda. 2.400 puntos por ganar la elección y 600 puntos que no utilizó
+    con el votante del presupuesto total de 1.000 que tenía para negociar.
+</p>
+<p align="justify">
+    En este primer tipo de juego, los partidos tendrán la oportunidad de negociar con solo uno de los votantes. En este caso,
+    negociarán con un votante que simpatiza con el partido A. Un votante es simpatizante de un partido si gana más puntos
+    cuando ese partido sale electo. Este votante obtendría:
+</p>
+<table class="center">
+<tr>
+    <td><strong>1.500</strong> puntos si gana el partido A</td>
+</tr>
+<tr>
+    <td><strong>1.000</strong> puntos si gana el partido B</td>
+</tr>
+</table>
+    <br>
+<p align="justify">
+    Ahora, el votante podría cambiar su votación si acepta alguna oferta de algún partido. Aceptar una oferta implica
+    que votará por ese partido.
+</p>
+<p align="justify">
+    El partido A ofrece 500 puntos para mantener su votación a favor del partido A. El partido B le ha ofrecido 1.000 puntos
+    por cambiar su voto al partido B.
+</p>
+<br>
+<div>
+    <h4>
+        Si el votante acepta la oferta del Partido B:
+    </h4>
+</div>
+
+{% formfields %}
+
+    {% next_button %}
+
+
+{% endblock %}

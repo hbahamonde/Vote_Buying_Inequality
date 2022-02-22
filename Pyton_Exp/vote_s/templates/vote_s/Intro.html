@@ -1,0 +1,272 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Usted es Votante
+{% endblock %}
+
+{% block content %}
+    {% load humanize %}
+<style>
+    #t02 {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    #t04 {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    #t02 th, #t02 td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    #t04 th, #t04 td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    tr {
+      padding: 10px;
+    }
+    td {
+        text-align:center
+    }
+    .center {
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+
+<p>
+    Usted es uno de los {{ N }} votantes de la elección y es <strong>simpatizante del partido {{ partido }}</strong>. En
+    particular, usted gana:
+</p>
+
+
+    <table id="t02" class="center">
+        <tr>
+            <td><strong>{{ pje_A|intcomma }} </strong>puntos si gana el partido A</td>
+        </tr>
+        <tr>
+            <td><strong>{{ pje_B|intcomma }} </strong>puntos si gana el partido B</td>
+        </tr>
+    </table>
+    <br>
+
+
+{% if n_pa == 1 and n_pb == 1 %}
+
+<p>
+    De los otros {{ N2 }} votantes,
+</p>
+        <table id="t04" class="center">
+            <tr>
+            <td><strong>{{ n_pa }} votará por el candidato del partido A</strong></td>
+            </tr>
+            <tr>
+            <td><strong>{{ n_pb }} votará por el candidato del partido B</strong></td>
+            </tr>
+        </table>
+    <br>
+
+    {% elif n_pa > 1 and n_pb > 1 %}
+<p>
+    De los otros {{ N2 }} votantes,
+</p>
+        <table id="t04" class="center">
+            <tr>
+            <td><strong>{{ n_pa }} votarán por el candidato del partido A</strong></td>
+            </tr>
+            <tr>
+            <td><strong>{{ n_pb }} votarán por el candidato del partido B</strong></td>
+            </tr>
+        </table>
+    <br>
+
+       {% elif n_pa == 1 and n_pb > 1 %}
+<p>
+    De los otros {{ N2 }} votantes,
+</p>
+        <table id="t04" class="center">
+            <tr>
+            <td><strong>{{ n_pa }} votará por el candidato del partido A</strong></td>
+            </tr>
+            <tr>
+            <td><strong>{{ n_pb }} votarán por el candidato del partido B</strong></td>
+            </tr>
+        </table>
+    <br>
+
+           {% elif n_pa > 1 and n_pb == 1 %}
+<p>
+    De los otros {{ N2 }} votantes,
+</p>
+        <table id="t04" class="center">
+            <tr>
+            <td><strong>{{ n_pa }} votarán por el candidato del partido A</strong></td>
+            </tr>
+            <tr>
+            <td><strong>{{ n_pb }} votará por el candidato del partido B</strong></td>
+            </tr>
+        </table>
+    <br>
+
+    {% elif n_pa == 0  and n_pb != 0 %}
+<p>
+    De los otros {{ N2 }} votantes,
+</p>
+        <table id="t04" class="center">
+            <tr>
+            <td><strong>{{ n_pb }} votarán por el candidato del partido B</strong></td>
+            </tr>
+        </table>
+    <br>
+    {% elif n_pb == 0 and n_pa != 0 %}
+<p>
+    De los otros {{ N2 }} votantes,
+</p>
+        <table id="t04" class="center">
+            <tr>
+            <td><strong>{{ n_pa }} votarán por el candidato del partido A</strong></td>
+            </tr>
+        </table>
+            <br>
+
+    {% else %}
+<p>
+    De los otros {{ N2 }} votantes,
+</p>
+        <table id="t04" class="center">
+            <tr>
+            <td><strong>{{ n_pa }} votarán por el candidato del partido A</strong></td>
+            </tr>
+            <tr>
+            <td><strong>{{ n_pb }} votarán por el candidato del partido B</strong></td>
+            </tr>
+        </table>
+    <br>
+    {% endif %}
+<p>
+    Con relación a los partidos políticos, el partido ganador obtiene {{ Constants.E|intcomma }} puntos, y ellos pueden darle puntos
+    para que vote por ellos. Cada partido tiene <strong>hasta {{ max_pg|intcomma }} puntos para ofrecer. </strong>
+</p>
+<p>
+    A continuación escriba los puntos que está dispuesto a recibir para mantener o cambiar su voto. Puede pedir distintas
+    cantidades a cada partido. Recuerde que los partidos pueden aceptar o no entregarle estos puntos.
+</p>
+<p>
+    ¿Está dispuesto/a a negociar con el partido A?
+</p>
+    <table id="t3" class="center">
+  <tr>
+    <td>    <div style="padding: 8px;">
+    <button type="button" onclick="myFunction()" id="recibir_siA" name="p_oferta_choice_A" value="True" class="btn btn-primary btn-large">Sí, quiero negociar con el partido A</button>
+    <br>
+    </div></td>
+    <td><div id="partido_ofertaA" style="display:none">
+
+        {% formfield player.p_oferta_amount_A label="OFERTE AQUÍ" %}
+    {% if player.p_oferta_amount_A != 0 %}
+        <div style="visibility: hidden">
+        {{ player.grabar_eleccionA }}
+        </div>
+    {% endif %}
+</div></td>
+  </tr>
+  <tr>
+    <td><div id="partido_no_oferta_a" style="display:block">
+    <button type="button" onclick="myFunction3()" id="recibir_noA" name="p_oferta_choice_A" value="False" class="btn btn-primary btn-large">No, no quiero negociar con el partido A</button>
+    </div></td>
+    <td></td>
+  </tr>
+</table>
+
+<p>
+  <br>  ¿Está dispuesto/a a negociar con el partido  B?
+</br>
+
+
+
+<table class="center">
+  <tr>
+    <td>    <div style="padding: 8px;">
+    <button type="button" onclick="myFunction2()" id="recibir_siB" name="p_oferta_choice_B" value="True" class="btn btn-primary btn-large">Si, quiero negociar con el partido B</button>
+<br>
+    </div></td>
+    <td><div id="partido_ofertaB" style="display:none">
+
+        {% formfield player.p_oferta_amount_B label="OFERTE AQUÍ" %}
+
+    {% if player.p_oferta_amount_B != 0 %}
+        <div style="visibility: hidden">
+        {{ player.grabar_eleccionB }}
+        </div>
+    {% endif %}
+
+</div></td>
+  </tr>
+  <tr>
+    <td><div id="partido_no_oferta_b" style="display:block">
+    <button type="button" onclick="myFunction3()" id="recibir_noB" name="p_oferta_choice_B" value="False" class="btn btn-primary btn-large">No, no quiero negociar con el partido B</button>
+    </div></td>
+    <td></td>
+  </tr>
+</table>
+
+</div>
+<div id="enviar" style="display:none">
+    <br>
+    <br>
+        <button class="btn btn-primary btn-large">Siguiente</button>
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+    <!-- define a script -->
+<script>
+    function myFunction() {
+        let acceptedA = document.getElementById("recibir_siA").onclick;
+        let pa = document.getElementById("partido_ofertaA");
+        let enviar = document.getElementById("enviar");
+        let n = document.getElementById("partido_no_oferta_a");
+
+        if (acceptedA){
+            pa.style.display = "block";
+            enviar.style.display = "block";
+            n.style.display = "none";
+            enviar.style.textAlign = "right";
+        }
+
+    }
+    function myFunction2() {
+        let acceptedB = document.getElementById("recibir_siB").onclick;
+        let pb = document.getElementById("partido_ofertaB");
+        let enviar = document.getElementById("enviar");
+        let n = document.getElementById("partido_no_oferta_b");
+
+        if (acceptedB){
+            pb.style.display = "block";
+            enviar.style.display = "block";
+            n.style.display = "none";
+            enviar.style.textAlign = "right";
+        }
+
+    }
+    function myFunction3() {
+        let acceptedB = document.getElementById("recibir_siB").onclick;
+        let acceptedA = document.getElementById("recibir_siA").onclick;
+        let enviar = document.getElementById("enviar");
+
+        if ((acceptedA != true) && (acceptedB != true)) {
+             enviar.style.display = "block";
+             enviar.style.textAlign = "right";
+        }
+
+    }
+
+</script>
+{% endblock %}
+
+

@@ -1,0 +1,26 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    {% if player.votanteOpartido == "votantes" %}
+        Usted es Votante
+    {% else %}
+        Usted es {{ mi_partido }}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+{% load humanize %}
+ {% if player.votanteOpartido == "votantes" %}
+<p>
+    Esperando que los partidos decidan si aceptan o no su oferta.
+</p>
+ {% else %}
+<p>
+    Esperando que el votante tome su decisión. Haga click abajo.
+</p>
+{% endif %}
+
+    {% next_button %}
+
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Usted es Votante
+{% endblock %}
+
+{% block content %}
+    {% load humanize %}
+ {% if oferta_PA == 0 and oferta_PB == 0 and A_envia_puntos == False and B_envia_puntos == False  %}
+<ol>
+    Los partidos han rechazado entregarle puntos por su voto.
+</ol>
+    {% next_button %}
+{% elif A_envia_puntos == False and B_envia_puntos == False  %}
+<ol>
+    Los partidos han rechazado entregarle puntos por su voto.
+</ol>
+    {% next_button %}
+{% elif A_envia_puntos == True and B_envia_puntos == None  %}
+<ol>
+    Presione siguiente para continuar
+</ol>
+     <button name="votante_acepta_oferta" value="1" class="btn btn-primary btn-large">Siguiente</button>
+
+{% elif A_envia_puntos == None and B_envia_puntos == True  %}
+<ol>
+    Presione siguiente para continuar
+</ol>
+     <button name="votante_acepta_oferta" value="2" class="btn btn-primary btn-large">Siguiente</button>
+
+ {% elif oferta_PA == 0 and  oferta_PB == 0 and A_envia_puntos == None and B_envia_puntos == None %}
+<ol>
+    Presione siguiente para continuar
+</ol>
+    {% next_button %}
+    {% else %}
+     <br>
+
+     <p>
+    Recuerde que,
+</p>
+<ul>
+  <li>	Usted ganaría {{ pje_A|intcomma }} puntos si es electo el partido A y {{ pje_B|intcomma }} puntos si es electo el partido B.</li>
+  <li>  Los partidos pueden darle hasta {{presupuesto|intcomma }} puntos.</li>
+  <li>	Si no acepta ninguna oferta será electo el candidato del partido {{partido_gana_antes_votacion}}.</li>
+</ul>
+
+<p>
+    los partidos han decidido lo siguiente:
+</p>
+
+<ul>
+  <li>	El partido A ha {% if oferta_PA > 0 and A_envia_puntos == True %} <strong>aceptado</strong>  {% else %} <strong>rechazado</strong> {% endif %} entregarle {{ oferta_PA|intcomma }} puntos por su voto.</li>
+  <li>  El partido B ha {% if oferta_PB > 0 and B_envia_puntos == True %} <strong>aceptado</strong>  {% else %} <strong>rechazado</strong> {% endif %} entregarle {{ oferta_PB|intcomma }} puntos por su voto.</li>
+</ul>
+     <p>
+   {% formfield player.votante_acepta_oferta label="¿Qué oferta desea aceptar?" %}
+</p>
+        {% next_button %}
+
+        {% endif %}
+
+
+{{ form.votante_acepta_oferta.errors }}
+
+{% endblock %}
+
+{% block scripts %}
+
+    <!-- define a script -->
+<script>
+    function myFunction() {
+        let acceptedA = document.getElementById("partido_A_envia_puntos").onclick;
+        let pa = document.getElementById("partido_ofertaA");
+        let enviar = document.getElementById("enviar");
+        let n = document.getElementById("partido_no_oferta_a");
+
+        if (acceptedA){
+            pa.style.display = "block";
+            enviar.style.display = "block";
+            n.style.display = "none";
+            enviar.style.textAlign = "right";
+        }
+
+    }
+
+</script>
+{% endblock %}

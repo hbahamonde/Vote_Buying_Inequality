@@ -1,0 +1,58 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Consentimiento para Participar en un Proyecto de Investigación Universitaria
+{% endblock %}
+
+{% block content %}
+       <h4>Este consentimiento informado es el mismo que te enviamos y que aceptaste al momento de pre-inscribirte en este estudio.
+    Sin embargo, estas invitado(a) a leerlo nuevamente si así lo quieres.</h4>
+<p align="justify">
+    Bienvenido, estás invitado(a) a participar en una investigación realizada por Héctor Bahamonde y Andrea Canales,
+    ambos académicos del Instituto de Ciencias Sociales de la Universidad de O’Higgins (UOH). El propósito de esta
+    investigación es entender las opiniones y reacciones de los individuos acerca de sus actitudes hacia fenómenos
+    particulares de la política.</p>
+<p align="justify">
+    Esta investigación es confidencial. “Confidencial” significa que si bien pediremos datos que puedan identificarte (como por
+    ejemplo tu email y nombre), estos datos se mantendrán en estricta confidencialidad en un servidor privado, y no serán
+    compartidos con nadie más. De hecho, esta información personal que pediremos, se utilizará para poder re-contactarte,
+    y hacer entrega del pago, si es que hubiere alguno. Después de realizado el pago, estos datos serán eliminados de la
+    base de datos y conservados en un servidor seguro, y serán reemplazados por un número identificatorio. Finalmente,
+    no nos interesa conocer tus preferencias individuales per se: todas tus respuestas forman parte de otros cientos de
+    otras respuestas. Además, siempre puedes pedir una copia de cualquier reporte basado en esta investigación. Todos los
+    datos grabados serán guardados indefinidamente por el equipo de investigación.</p>
+<p align="justify">
+    La participación en esta investigación no conlleva ningún riesgo, y es posible que no recibas ningún beneficio por
+    participar en este estudio más que el potencial pago por la participación en este. La cantidad de dinero recibida
+    dependerá de tus decisiones individuales a lo largo del estudio. </p>
+<p align="justify">
+    Tu pago por participar se hará en privado y mediante una transferencia bancaria. El monto dependerá de las decisiones
+    que tomes en el estudio, como se describe en las instrucciones que recibirás durante el estudio. Tienes garantizado
+    un mínimo de $2.000 por asistir; sin embargo, tu pago final puede ser significativamente mayor. El CESS hará el pago
+    el mismo día del estudio, o se pondrá en contacto contigo vía email para efectuar el pago en los días sucesivos.</p>
+<p align="justify">
+    Tu participación en este estudio es voluntaria. También puedes retirarte del estudio en cualquier momento durante los
+    procedimientos. En el caso de que no desees participar, no recibirás tu compensación monetaria, si es que hubiera
+    alguna. Adicionalmente, puedes elegir no responder alguna pregunta si no te sientes cómodo(a) haciéndolo.</p>
+<p align="justify">
+    Si tienes alguna pregunta sobre este estudio o los procedimientos, puedes contactarnos en cualquier de los siguientes
+    correos electrónicos “hector.bahamonde@uoh.cl” y/o “andrea.canales@uoh.cl”. También puedes reunirte personalmente
+    con alguno de nosotros, o ambos, en el Instituto de Ciencias Sociales UOH.</p>
+<p align="justify">
+    Si tienes por lo menos 18 años de edad, entiendes lo que acabas de leer, y das tu consentimiento para participar en
+    el estudio, haz clic en “De acuerdo” para empezar la encuesta. Si no, por favor, haz click en “No estoy de acuerdo”
+    y saldrás del programa. En ese caso, no recibirás compensación alguna.</p>
+
+    <table border="0" cellpadding="10px" align="center">
+        <tr>
+            <th align="left">
+                <button name="consent" value="True" class="btn btn-primary btn-large">De acuerdo</button>
+            </th>
+        </tr>
+    </table>
+    {{ form.consent.errors }}
+
+
+
+{% endblock %}

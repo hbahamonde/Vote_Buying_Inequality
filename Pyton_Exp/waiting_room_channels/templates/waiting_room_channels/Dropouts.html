@@ -1,0 +1,13 @@
+{% extends "global/PageTemplate.html" %}
+{% load otree static %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+    {% include Constants.header_template %}
+    <p>
+        You got £{{ participant.vars.waiting_room_task_bonus|floatformat:2 }} from setting sliders to the correct position.
+    </p>
+    <p style="color: red; font-weight: bold">TODO: provide with end of study instructions/info</p>
+{% endblock %}

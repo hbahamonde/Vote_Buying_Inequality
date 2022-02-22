@@ -1,0 +1,34 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    {% if player.votanteOpartido == "votantes" %}
+        Usted es Votante
+    {% else %}
+        Usted es {{ mi_partido }}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+ {% if player.votanteOpartido == "votantes" %}
+<p>
+    Espere que los partidos realicen sus ofertas. Tenga presente que,
+</p>
+<ol>
+  <li>	Si un partido le ofrece puntos, y usted los acepta, esos puntos serán para usted. </li>
+  <li>	Si acepta los puntos que le ofrezca un partido, votará por ese candidato.</li>
+  <li>	Podrá aceptar ofertas de cualquier partido. Sin embargo, sólo puede aceptar una oferta.</li>
+  <li>	Luego de esto, se realiza la elección y ganará los puntos de acuerdo con qué candidato gane la elección.</li>
+</ol>
+
+ {% else %}
+<p>
+    Esperando que el votante tome su decisión. Haga click abajo.
+</p>
+{% endif %}
+
+
+    {% next_button %}
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Gracias por su partipación en este estudio.
+{% endblock %}
+
+{% block content %}
+
+<p>
+    Agradecemos sinceramente su contribución al éxito de esta investigación.
+</p>
+<p>
+    Su pago será enviado a través de una transferencia electrónica durante los próximos días. En general esto toma de una a
+dos semanas.
+</p>
+
+<p>
+    Para completar los datos para de la transferencia bancaria, haga clic en
+
+<a href="https://usach.ca1.qualtrics.com/jfe/form/SV_3CoPOlE8p9dA8Bf?survey=VE_USACH_01&ID={{ redemption_code }}&total_reward={{ participant.payoff_plus_participation_fee }}">DATOS BANCARIOS</a>
+</p>
+
+<p>
+    Si tiene dudas sobre el proceso, o cualquier otra consulta, escríbanos a cess@usach.cl.
+</p>
+    <p>
+    Nos vemos en otro estudio! <br>
+    <strong> CESS Santiago</strong>
+</br>
+
+{% endblock %}

@@ -1,0 +1,150 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Usted es {{ partido }}
+{% endblock %}
+
+{% block content %}
+    {% load humanize %}
+    <style>
+    table {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    #t02 th, #t02 td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    tr {
+      padding: 10px;
+    }
+    td {
+        text-align:center
+    }
+    .center {
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+<p>
+    En esta ronda del juego, usted  <strong>representará al {{ partido }}</strong>. Si gana estas elecciones, usted
+    <strong> obtiene {{ Constants.E|intcomma }} puntos</strong>, además cuenta con <strong>{{ presupuesto|intcomma }}</strong> <strong>puntos para negociar </strong>
+    con uno de los votantes. Su partido rival cuenta con la misma cantidad de puntos para entregarle al votante, y el
+    votante lo sabe. Si usted decide no utilizar estos puntos, o utilizar sólo una parte, estos puntos siguen siendo suyos
+    y se <strong>sumarán a su ganancia al final </strong> del juego.
+
+<p>
+    En esta elección en particular <strong>participan {{ N }} votantes</strong>, y actualmente:
+</p>
+</p>
+     {% if n_pa > 1 and n_pb > 1 %}
+<p>
+
+<table class="center" border="1">
+  <tr>
+    <th>Votarían por el partido A</th>
+    <th>Votarían por el partido B</th>
+  </tr>
+  <tr>
+    <td><strong>{{ n_pa }}</strong> votantes</td>
+    <td><strong>{{ n_pb }}</strong> votantes</td>
+  </tr>
+</table>
+    <br>
+
+    {% elif n_pa == 1 and n_pb == 1 %}
+<p>
+
+<table class="center" border="1">
+  <tr>
+    <th>Votarían por el partido A</th>
+    <th>Votarían por el partido B</th>
+  </tr>
+  <tr>
+    <td><strong>{{ n_pa }}</strong> votante</td>
+    <td><strong>{{ n_pb }}</strong> votante</td>
+  </tr>
+</table>
+    <br>
+
+     {% elif n_pa == 1 and n_pb > 1 %}
+<p>
+
+<table class="center" border="1">
+  <tr>
+    <th>Votarían por el partido A</th>
+    <th>Votarían por el partido B</th>
+  </tr>
+  <tr>
+    <td><strong>{{ n_pa }}</strong> votante</td>
+    <td><strong>{{ n_pb }}</strong> votantes</td>
+  </tr>
+</table>
+    <br>
+
+      {% elif n_pa > 1 and n_pb == 1 %}
+<p>
+
+<table class="center" border="1">
+  <tr>
+    <th>Votarían por el partido A</th>
+    <th>Votarían por el partido B</th>
+  </tr>
+  <tr>
+    <td><strong>{{ n_pa }}</strong> votantes</td>
+    <td><strong>{{ n_pb }}</strong> votante</td>
+  </tr>
+</table>
+    <br>
+
+    {% elif n_pa == 0 and n_pb != 0 %}
+
+<table class="center" border="1">
+  <tr>
+    <th>Votarían por el partido A</th>
+    <th>Votarían por el partido B</th>
+  </tr>
+  <tr>
+    <td><strong>{{ n_pa }}</strong> votantes</td>
+    <td><strong>{{ n_pb }}</strong> votantes</td>
+  </tr>
+</table>
+    <br>
+
+     {% elif n_pa != 0 and n_pb == 0 %}
+
+<table class="center" border="1">
+  <tr>
+    <th>Votarían por el partido A</th>
+    <th>Votarían por el partido B</th>
+  </tr>
+  <tr>
+    <td><strong>{{ n_pa }}</strong> votantes</td>
+    <td><strong>{{ n_pb }}</strong> votantes</td>
+  </tr>
+</table>
+    <br>
+
+    {% endif %}
+
+<p>
+    Usted y el otro partido tienen la posibilidad de negociar con <strong>uno</strong> de los simpatizantes del partido {{ partido_votante }}.
+    El <strong> votante con el que negociará ganaría: </strong>
+</p>
+    <table class="center" border="1">
+      <tr>
+        <td><strong>{{ pje_A|intcomma }} puntos si gana el partido A</td>
+        <td><strong>{{ pje_B|intcomma }} puntos si gana el partido B</td>
+      </tr>
+    </table>
+     <br>
+<p>
+    A continuación el votante indicará si está dispuesto a recibir puntos de su partido. Si es que está dispuesto a aceptar
+    puntos, el votante también indicará por cuántos puntos el votante votaría por su partido. Usted podría darle hasta
+    {{ presupuesto|intcomma }} puntos, y el votante lo sabe.
+</p>
+
+    {% next_button %}
+
+{% endblock %}

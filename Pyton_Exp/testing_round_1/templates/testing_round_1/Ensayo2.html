@@ -1,0 +1,52 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Ensayo del Juego 2
+{% endblock %}
+
+{% block content %}
+
+    <style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  tr {
+  padding: 10px;
+}
+}
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+<p>
+    En una votación ficticia, participan 5 votantes que pueden optar por el candidato del Partido A o del Partido B.
+    De los 5 votantes 2 votarán por el partido A y 3 por el partido B.
+</p>
+
+<p>
+    El partido que gane la elección obtendrá 2.400 puntos. Además, cada partido tiene 1.000 que puede utilizar para negociar
+    con un votante. Estos puntos serán parte de la ganancia de cada partido excepto por los puntos que ofrezca y sean aceptados
+    por el votante.
+</p>
+<p>
+    En este segundo tipo de juego, los votantes tendrán la oportunidad de negociar con uno o con ambos partidos. Un votante
+    es simpatizante de un partido si gana más puntos cuando gana ese partido comparado a si ganara el otro partido.
+    En esta ronda de prueba, el votante obtendría 1.500 puntos si gana el partido B y 1.000 si gana el partido A, pero podría
+    cambiar su votación si logra negociar con alguno de los partidos. Aceptar una oferta implica que el votante votará por ese partido.
+</p>
+<p>
+    El partido B ofrece 500 puntos para mantener su votación a favor del partido B. El partido A le ha ofrecido 1.000 puntos
+    por cambiar su voto al partido A.
+</p>
+
+<div>
+    <h4>
+        Si el votante acepta la oferta del Partido A:
+    </h4>
+</div>
+{% formfields %}
+    {% next_button %}
+
+{% endblock %}

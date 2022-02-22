@@ -1,0 +1,36 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+    {% load humanize %}
+<p>
+    En el siguiente juego usted participará en una elección ficticia en la que participan votantes y dos partidos políticos.
+    Usted podrá ser un votante en cada elección o un partido político. En cada ronda de este juego, usted podrá ganar puntos,
+    los que irá acumulando y al final del estudio, recibirás 5 pesos chilenos por cada 12 puntos acumulados.
+</p>
+
+<p>
+    En este juego, los votantes podrán negociar con uno o ambos partidos, y ofrecer puntos a cambio de su voto.
+    Si el partido aceptara los puntos ofrecidos, el votante votará por ese partido. El resto de los votantes son ficticios
+    y por lo tanto no cambiaran su voto.
+</p>
+<p>
+    Si usted es votante, le informaremos cuantos puntos ganaría cuando gana cada uno de los partidos, por qué partido
+    votarán los otros votantes, cuántos puntos gana el partido ganador y cuál es el presupuesto que tienen los partidos
+    para negociar con el votante. Si usted es partido político, le informaremos cuántos puntos gana el votante con el
+    cual negociará cuando sale electo cada partido y por qué partido votarán los otros votantes.
+</p>
+
+<div class="alert alert-warning" role="alert">
+    <h5>
+        Le recomendamos tener a mano un lápiz y un papel, en caso de que quiera tomar nota de ciertos datos que le entregaremos.
+    </h5>
+</div>
+
+    {% next_button %}
+
+{% endblock %}

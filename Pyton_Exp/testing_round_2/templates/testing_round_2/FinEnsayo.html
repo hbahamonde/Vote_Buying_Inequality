@@ -1,0 +1,20 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Fin del Ensayo
+{% endblock %}
+
+{% block content %}
+
+<p align="justify">
+    En este momento el ensayo ha llegado a su fin. Desde la próxima ronda comenzaremos el juego real. Como se trataba de
+    un ensayo, todo lo que haya ganado o perdido en la ronda de ensayo, no cuenta. Sin embargo, todas las decisiones que
+    tome de aquí en adelante se seguirán sumando a lo acumulado en la primera etapa. Es decir, las decisiones que tome
+    desde la siguiente pantalla impactarán en su pago final.
+</p>
+
+
+    {% next_button %}
+
+{% endblock %}

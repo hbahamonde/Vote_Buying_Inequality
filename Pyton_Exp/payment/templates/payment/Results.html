@@ -1,0 +1,28 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Resultado Final
+{% endblock %}
+
+{% block content %}
+{% load humanize %}
+<p>
+        Ha finalizado el estudio!
+    </p>
+    <p>
+        Tu pago final es <b> ${{ pago3|intcomma }}</b>.
+    </p>
+
+    <p>
+        Esto es: <strong> ${{ pago1|intcomma }} </strong> del juego más el pago por completar la encuesta de
+        <strong>${{ Constants.show_up|intcomma }}</strong>.
+    </p>
+    <p>
+        Presiona siguiente para indicar los datos para el pago</b>.
+    </p>
+
+    {% next_button %}
+{% endblock %}
+
+

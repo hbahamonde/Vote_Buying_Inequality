@@ -1,0 +1,25 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Description of Earnings Task
+{% endblock %}
+
+{% block content %}
+<p>
+    This experiment will consist of 5 rounds and a practice round.  In each of the 5 rounds you will undertake a task to earn additional ECU.  Each round will last 60 seconds with 15 second breaks in between.
+</p>
+<p>
+    The task you do may change during the experiment, but you will start with the Slider Task.  In the Slider Task you will be shown a screen with 60 sliders. An example slider appears on this screen. Each slider is initially positioned at random position between 0 and 100. The computer will tell you your target for each slider. You can use the mouse in any way you like to move each slider. You can readjust the position of each slider as many times as you wish. Your score in the task will depend on how many sliders you correctly position, matching their target.
+</p>
+<p>
+    Your final earnings depend on your average ranking across all five rounds compared to the other participants (low / middle / high). Your earnings are calculated as your wage rate of <b>{{ player.wage }}</b> multiplied by 5 ECU if in the low group, 8 ECU if in the middle group, and 13 ECU if in the high group. In the event of a tie, rank will be randomly determined.
+</p>
+<p>
+    After the task you and the other participants will choose a tax rate on earnings from the slider task to allocate your resources. Proceeds from the tax will be allocated equally across all participants.
+
+</p>
+
+    {% next_button %}
+
+{% endblock %}

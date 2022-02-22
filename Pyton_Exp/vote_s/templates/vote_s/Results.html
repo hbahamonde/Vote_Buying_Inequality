@@ -1,0 +1,34 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    {% if player.votanteOpartido == "votantes" %}
+        Usted es Votante
+    {% else %}
+        Usted es {{ mi_partido }}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+{% load humanize %}
+     {% if player.votanteOpartido == "votantes" %}
+<p>
+    Ha salido electo el {{ partido_elegido }}. Usted ha ganado {{ puntaje_total|intcomma }} puntos, debido que salió electo el {{ partido_elegido }}{% if oferta_acepta == 1 and pa_envia_puntos == 1%},
+     más {{ oferta_a|intcomma }} puntos que aceptó a cambio de su voto{% elif oferta_acepta == 2 and pb_envia_puntos == 1 %}, más {{ oferta_b|intcomma }} puntos que aceptó a cambio de su voto{% else %}{% endif %}.
+    El partido A ganó {{ PA_gano|intcomma }} puntos y el partido B ganó {{ PB_gano|intcomma }} puntos.
+</>
+    {% else %}
+<p>
+    El votante simpatizante del Partido {{ tipo_partido }} optó por el candidato del {% if oferta_acepta == 1 %} Partido A <strong>y aceptó {{ oferta_a }} puntos del partido A.</strong>
+    {% elif oferta_acepta == 2 %} Partido B <strong>y aceptó {{ oferta_b }} puntos del partido B.</strong>{% else %} Partido {{ tipo_partido }}.{% endif %} Usted {{ win_lose }}
+    la elección, y su pago es de {{ puntaje_total|intcomma }} puntos. El votante ganó {{ votante_gano|intcomma }} puntos
+    y el partido {% if mi_partido == "Partido A" %} B ganó {{ PB_gano|intcomma }} {% elif mi_partido == "Partido B" %} A ganó {{ PA_gano|intcomma }}{% endif %} puntos.
+</p>
+
+
+    {% endif %}
+
+    {% next_button %}
+{% endblock %}
+
+

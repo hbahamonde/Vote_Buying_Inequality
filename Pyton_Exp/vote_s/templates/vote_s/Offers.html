@@ -1,0 +1,56 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Usted es {{ partido }}
+{% endblock %}
+
+{% block content %}
+    {% load humanize %}
+    {% if oferta_PA == 0 and  oferta_PB == 0 %}
+<ol>
+    El votante no desea recibir ofertas para cambiar o mantener su voto.
+
+</ol>
+
+    {% else %}
+<p>
+    Recuerde que,
+</p>
+<ol>
+  <li>	Su partido puede darle hasta  <strong>{{ presupuesto|intcomma }}</strong> puntos al votante.</li>
+  <li>  Hay {{ N }} votantes, {{ n_pa }} votarán por el partido A, y {{ n_pb }} por el partido B. </li>
+  <li>	Usted está negociando con uno de los votantes del partido {{ tipo_partido }}, el cual ganaría {{ pje_A|intcomma }} puntos si es electo el partido A y
+   {{ pje_B|intcomma }} puntos si es electo el partido B.</li>
+</ol>
+{% if oferta_PA > 0 and  oferta_PB > 0  %}
+<p>
+    El votante está dispuesto a votar por tu partido a cambio de <strong>{% if player.votanteOpartido == "Partido A" %} {{ oferta_PA|intcomma }}
+    {% else %} {{ oferta_PB|intcomma }} {% endif %}</strong> puntos.
+</p>
+<p>
+   {% formfield player.partido_envia_puntos label="¿Está dispuesto a darle esos puntos?" %}
+</p>
+{% elif oferta_PA > 0 and  oferta_PB == 0  %}
+<p>
+    {% if player.votanteOpartido == "Partido A" %} El votante está dispuesto a votar por tu partido a cambio de <strong>{{ oferta_PA|intcomma }} </strong> puntos.
+        {% formfield player.partido_envia_puntos label="¿Está dispuesto a darle esos puntos?" %}
+
+    {% else %}
+        El votante no desea recibir ofertas para cambiar o mantener su voto. {% endif %}
+{% elif oferta_PA == 0 and  oferta_PB > 0  %}
+<p>
+    {% if player.votanteOpartido == "Partido B" %} El votante está dispuesto a votar por tu partido a cambio de <strong>{{ oferta_PB|intcomma }} </strong> puntos.
+        {% formfield player.partido_envia_puntos label="¿Está dispuesto a darle esos puntos?" %}
+
+    {% else %}
+        El votante no desea recibir ofertas para cambiar o mantener su voto. {% endif %}
+{% endif %}
+</p>
+<p>
+</p>
+
+        {% endif %}
+      {% next_button %}
+{{ form.partido_envia_puntos.errors }}
+{% endblock %}

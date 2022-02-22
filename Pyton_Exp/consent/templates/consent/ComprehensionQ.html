@@ -1,0 +1,16 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Comprehension Check Questions
+{% endblock %}
+
+{% block content %}
+<p>
+    To make sure that you understand the instructions please take a moment to answer the following questions.  Once you have responded correctly to all the questions you will begin a practice round.
+</p>
+
+{% formfields %}
+    {% next_button %}
+
+{% endblock %}
